@@ -68,12 +68,16 @@ if st.sidebar.button("Submit"):
         # explainer = shap.TreeExplainer(mm)
         # shap_values = explainer.shap_values(X)
 
+        # 核心逻辑：判断 result_prob_pos 是否大于0.74，大于则为1，否则为0
+        binary_result = 1 if result_prob_pos >= 0.74 else 0
+
         # 显示预测结果
         st.text(f"The probability of LightGBM is: {result_prob_pos}%")
 
+
         # 🌟 核心修改3：自适应拼接新数据
         # 构造新数据行：输入值 + 预测概率 + Label（暂为空）
-        new_data_row = list(input_values.values()) + [result_prob_pos, None]
+        new_data_row = list(input_values.values()) + [binary_result, None]
         new_data = pd.DataFrame([new_data_row], columns=df_columns)
 
         # 更新session_state中的数据
