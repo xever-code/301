@@ -20,7 +20,7 @@ if 'data' not in st.session_state:
     st.session_state['data'] = pd.DataFrame(columns=df_columns)
 
 # 页面标题
-st.header('ColoGuard AI')
+st.header('SmartColo AI')
 
 # 创建五列布局用于显示logo
 left_column, col1, col2, col3, right_column = st.columns(5)
@@ -32,7 +32,7 @@ except Exception as e:
     st.warning(f"Logo图片加载失败: {e}")
 
 # 侧边栏输入区
-st.sidebar.header('输入参数')
+st.sidebar.header('Parameters input')
 
 # 🌟 核心修改1：自适应生成输入框
 # 存储所有输入值的字典
